@@ -6,7 +6,7 @@
 /*   By: ahakki <ahakki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:01:13 by ahakki            #+#    #+#             */
-/*   Updated: 2025/01/23 20:35:49 by ahakki           ###   ########.fr       */
+/*   Updated: 2025/01/23 22:21:45 by ahakki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	ft_isonlydigit(char *av)
 	i = 0;
 	if (av[i] == '-' || av[i] == '+')
 		i++;
+	if (av[i] == '\0' || av[i] == '+' || av[i] == '-' || av[i] == ' ')
+		return (0);
 	while (ft_isdigit(av[i]))
 		i++;
 	if (!av[i])

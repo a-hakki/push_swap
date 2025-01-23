@@ -3,4 +3,6 @@
 
 # include "./ft_libft/libft.h"
 
+#include <stdlib.h>
+
 #endif
