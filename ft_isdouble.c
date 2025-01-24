@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isonlydigit.c                                   :+:      :+:    :+:   */
+/*   ft_isdouble.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahakki <ahakki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/22 14:01:13 by ahakki            #+#    #+#             */
-/*   Updated: 2025/01/24 15:48:59 by ahakki           ###   ########.fr       */
+/*   Created: 2025/01/24 21:45:59 by ahakki            #+#    #+#             */
+/*   Updated: 2025/01/24 22:05:33 by ahakki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./push_swap.h"
 
-int	ft_isonlydigit(char *av)
+int	ft_isdouble(t_list **lst)
 {
-	int	i;
+	t_list	*temp;
+	t_list	*checker;
 
-	i = 0;
-	if (av[i] == '-' || av[i] == '+')
-		i++;
-	if (av[i] == '\0' || av[i] == '+' || av[i] == '-')
-		return (0);
-	while (ft_isdigit(av[i]))
-		i++;
-	if (!av[i])
-		return (1);
-	return (0);
+	temp = *lst;
+	while (temp)
+	{
+		checker = temp->next;
+		while (checker)
+		{
+			if (temp->content == checker->content)
+				return (ft_clear(*lst), printfd(2, "Error\n"), exit(1), 0);
+			checker = checker->next;
+		}
+		temp = temp->next;
+	}
+	return (1);
 }
