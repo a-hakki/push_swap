@@ -6,7 +6,7 @@
 /*   By: ahakki <ahakki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 21:40:45 by ahakki            #+#    #+#             */
-/*   Updated: 2025/01/24 21:41:47 by ahakki           ###   ########.fr       */
+/*   Updated: 2025/01/24 22:59:37 by ahakki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_atoi2(char const *str, t_list *lst)
 	return (n * sign);
 }
 
-int	ft_isspace(char *av, t_list *lst)
+int	ft_isspace(char *av)
 {
 	int	i;
 
@@ -58,7 +58,7 @@ int	ft_isdayz(char *s, t_list **lst)
 
 	if (ft_isonlydigit(s))
 		ft_lstadd_front(lst, ft_lstnew(ft_atoi2(s, *lst)));
-	else if (ft_isspace(s, *lst))
+	else if (ft_isspace(s))
 	{
 		spl = ft_split(s, ' ');
 		if (!spl)

@@ -5,47 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahakki <ahakki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/22 09:35:05 by ahakki            #+#    #+#             */
-/*   Updated: 2025/01/24 22:02:34 by ahakki           ###   ########.fr       */
+/*   Created: 2025/01/24 23:23:56 by ahakki            #+#    #+#             */
+/*   Updated: 2025/01/25 20:18:20 by ahakki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "./push_swap.h"
 
-void	ft_clear(t_list *lst)
+void	pb(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*temp;
 
-	while (lst)
-	{
-		temp = lst->next;
-		free(lst);
-		lst = temp;
-	}
+	if (!stack_a || !(*stack_a))
+		return;
+	temp = *stack_a;
+	*stack_a = temp->next;
+	temp->next = NULL;
+	ft_lstadd_front(stack_b, temp);
+	printfd(1, "pb\n");
 }
 
-int main(int ac, char **av)
+void	pa(t_list **stack_a, t_list **stack_b)
 {
-	int		i;
-	t_list	*lst = NULL;
 	t_list	*temp;
 
-	if (ac < 2)
-		return (1);
-	i = ac - 1;
-	while (i > 0)
-		ft_isdayz(av[i--], &lst);
-	ft_isdouble(&lst);
-	temp = lst;
-	if (i != 0)
-	{
-		printfd(2, "Error\n");
-		return (ft_clear(temp), 1);
-	}
-	while (lst)
-	{
-		printfd(1, "%d\n", lst->content);
-		lst = lst->next;
-	}
-	return (ft_clear(temp), 0);
+	if (!stack_b || !(*stack_b))
+		return;
+	temp = *stack_b;
+	*stack_b = temp->next;
+	temp->next = NULL;
+	ft_lstadd_front(stack_a, temp);
+	printfd(1, "pa\n");
 }
