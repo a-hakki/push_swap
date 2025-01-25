@@ -6,7 +6,7 @@
 /*   By: ahakki <ahakki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 21:40:45 by ahakki            #+#    #+#             */
-/*   Updated: 2025/01/24 22:59:37 by ahakki           ###   ########.fr       */
+/*   Updated: 2025/01/25 22:12:08 by ahakki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	ft_isdayz(char *s, t_list **lst)
 	else if (ft_isspace(s))
 	{
 		spl = ft_split(s, ' ');
-		if (!spl)
+		if (!spl || !*spl)
 			return (ft_clear(*lst), printfd(2, "Error\n"), exit(1), 0);
 		i = ft_arrlen(spl) - 1;
 		while (i >= 0)
