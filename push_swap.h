@@ -16,5 +16,6 @@ void	ft_clear(t_list *lst);
 void	swap(t_list **a, t_list **b);
 void    ra_rb(t_list **a, int c);
 void    rr(t_list **a, t_list **b);
+void    rra_rrb(t_list **a, int c);
 
 #endif
