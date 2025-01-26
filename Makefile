@@ -36,5 +36,8 @@ s: re clean
 	make clean -C $(LIBFT_DIR)
 	rm -rf $(object)
 
+f: $(object)
+	$(CC) $(CFLAGS) $(object) ./ft_libft/libft.a -o $(NAME)
+	rm -rf $(object) && clear
 .SECONDARY: $(object)
 .PHONY: all clean fclean re somme

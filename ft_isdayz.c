@@ -6,13 +6,13 @@
 /*   By: ahakki <ahakki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 21:40:45 by ahakki            #+#    #+#             */
-/*   Updated: 2025/01/25 22:12:08 by ahakki           ###   ########.fr       */
+/*   Updated: 2025/01/26 17:28:22 by ahakki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-int	ft_atoi2(char const *str, t_list *lst)
+int	ft_atoi2(char const *str, t_list *lst, char **spl)
 {
 	int		i;
 	int		sign;
@@ -33,7 +33,7 @@ int	ft_atoi2(char const *str, t_list *lst)
 		n = (n * 10) + (str[i] - '0');
 		i++;
 		if (n > 2147483648)
-			return (ft_clear(lst), printfd(2, "Error\n"), exit(1), 0);
+			return (ft_clear(lst), ft_free("2", spl), printfd(2, "Error\n"), exit(1), 0);
 	}
 	return (n * sign);
 }
@@ -57,19 +57,19 @@ int	ft_isdayz(char *s, t_list **lst)
 	int		i;
 
 	if (ft_isonlydigit(s))
-		ft_lstadd_front(lst, ft_lstnew(ft_atoi2(s, *lst)));
+		ft_lstadd_front(lst, ft_lstnew(ft_atoi2(s, *lst, NULL)));
 	else if (ft_isspace(s))
 	{
 		spl = ft_split(s, ' ');
 		if (!spl || !*spl)
-			return (ft_clear(*lst), printfd(2, "Error\n"), exit(1), 0);
+			return (ft_clear(*lst), ft_free("2", spl), printfd(2, "Error\n"), exit(1), 0);
 		i = ft_arrlen(spl) - 1;
 		while (i >= 0)
 		{
 			if (ft_isonlydigit(spl[i]))
-				ft_lstadd_front(&*lst, ft_lstnew(ft_atoi2(spl[i], *lst)));
+				ft_lstadd_front(&*lst, ft_lstnew(ft_atoi2(spl[i], *lst, spl)));
 			else
-				return (ft_clear(*lst), printfd(2, "Error\n"), exit(1), 0);
+				return (ft_clear(*lst), ft_free("2", spl), printfd(2, "Error\n"), exit(1), 0);
 			i--;
 		}
 		ft_free("2", spl);
