@@ -6,7 +6,7 @@
 /*   By: ahakki <ahakki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 09:35:05 by ahakki            #+#    #+#             */
-/*   Updated: 2025/01/26 22:31:40 by ahakki           ###   ########.fr       */
+/*   Updated: 2025/01/27 17:09:23 by ahakki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void	ft_swaped(t_list **stack_a, t_list **stack_b, int *arr, int i)
 	int	end;
 	int	offset;
 
-	if (i <= 100 && i >= 5)
-		offset = i / 5;
+	if (i <= 100 && i)
+		offset = i / 6;
 	else if (i > 100)
-		offset = i / 16;
+		offset = i / 10;
 	else
 		offset = 1;
 	start = 0;
@@ -48,15 +48,14 @@ void	ft_swaped(t_list **stack_a, t_list **stack_b, int *arr, int i)
 		else if ((*stack_a)->content > arr[start] && (*stack_a)->content <= arr[end])
 		{
 			pb_pa(stack_a, stack_b, 'b');
-			if ((*stack_b)->next)
-				if ((*stack_b)->content < (*stack_b)->next->content)
-					sa_sb(stack_b, 'b');
+			if ((*stack_b)->next && (*stack_b)->content < (*stack_b)->next->content)
+				sa_sb(stack_b, 'b');
 			if (end < i - 1)
-				end ++;
+				end++;
 			if (start + 1 < end)
 				start++;
 		}
-		else if ((*stack_a)->content > arr[start])
+		else
 			ra_rb(stack_a, 'a');
 	}
 }
@@ -64,36 +63,38 @@ void	ft_swaped(t_list **stack_a, t_list **stack_b, int *arr, int i)
 void	ft_sorted(t_list **stack_a, t_list **stack_b, int i)
 {	
 	t_list	*temp;
+	t_list	*max;
 	int		pos;
 	int		index;
 
-	temp = (*stack_b);
-	pos = 0;
-	pos = 0;
 	while (*stack_b)
 	{
-		if (temp->content < (*stack_b)->content)
+		temp = *stack_b;
+		pos = 0;
+		index = 0;
+		max = temp;
+		while (temp)
 		{
-			temp = (*stack_b);
-			index = pos;
-		}
-		(*stack_b) = (*stack_b)->next;
-		pos++;
-		
-		if (pos == i)
-		{
-			if (index < i / 2)
+			if (max->content < temp->content)
 			{
-				printfd(1, "---bigger---\n");
-				pb_pa(stack_b, stack_a, 'a');
+				max = temp;
+				index = pos;
 			}
-			else
-			{
-				printfd(1, "---smaller---\n");
+			temp = temp->next;
+			pos++;
+		}
+		if (index <= i / 2)
+		{
+			while (index-- > 0)
+				ra_rb(stack_b, 'b');
+		}
+		else
+		{
+			while (index++ < i)
 				rra_rrb(stack_b, 'b');
-				pb_pa(stack_b, stack_a, 'a');
-			}
 		}
+		pb_pa(stack_b, stack_a, 'a');
+		i--;
 	}
 }
 
@@ -103,7 +104,7 @@ int main(int ac, char **av)
 	int		*arr;
 	t_list	*stack_a;
 	t_list	*stack_b;
-	t_list	*temp;
+	// t_list	*temp;
 
 	stack_a = NULL;
 	stack_b = NULL;
@@ -116,15 +117,19 @@ int main(int ac, char **av)
 	i = ft_lstsize(stack_a);
 	arr = (int *)(malloc(i * sizeof(int)));
 	if (!arr)
-		return (ft_clear(stack_a), ft_clear(stack_b), 0);
+		return (ft_clear(stack_a), 0);
 	ft_sortedarr(arr, stack_a, i);
 	ft_swaped(&stack_a, &stack_b, arr, i);
 	ft_sorted(&stack_a, &stack_b, i);
-	temp = stack_a;
-	while (temp)
-	{
-		printfd(1, "%d\n", temp->content);
-		temp = temp->next;
-	}
-	return (ft_clear(stack_b), ft_clear(temp), free(arr), 0);
+	// temp = stack_a;
+	// while (temp)
+	// {
+	// 	printfd(1, "%d\n", temp->content);
+	// 	temp = temp->next;
+	// }
+	// Clean up
+	ft_clear(stack_a);
+	ft_clear(stack_b);
+	free(arr);
+	return (0);
 }

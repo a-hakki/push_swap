@@ -6,7 +6,7 @@
 /*   By: ahakki <ahakki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 23:23:56 by ahakki            #+#    #+#             */
-/*   Updated: 2025/01/26 21:48:15 by ahakki           ###   ########.fr       */
+/*   Updated: 2025/01/27 14:08:32 by ahakki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,11 @@ void    rra_rrb(t_list **a, int c)
     t_list    *tmp;
     t_list    *fin;
 
-    if (!(*a) || (*a)->next)
+    if (!(*a) || !(*a)->next)
+    {
+        printfd(1, "here\n");
         return ;
+    }
     tmp = ft_lstlast(*a);
     fin = *a;
     while (fin->next->next != NULL)
