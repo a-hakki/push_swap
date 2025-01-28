@@ -6,7 +6,7 @@
 /*   By: ahakki <ahakki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 21:40:45 by ahakki            #+#    #+#             */
-/*   Updated: 2025/01/26 17:28:22 by ahakki           ###   ########.fr       */
+/*   Updated: 2025/01/28 13:47:26 by ahakki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_atoi2(char const *str, t_list *lst, char **spl)
 	sign = 1;
 	n = 0;
 	if (!strncmp(str, "2147483648", 10))
-		return (ft_clear(lst), printfd(2, "Error\n"), exit(1), 0);
+		return (ftc(lst), printfd(2, "Error\n"), exit(1), 0);
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
 	if (str[i] == '+' || str[i] == '-')
@@ -33,7 +33,8 @@ int	ft_atoi2(char const *str, t_list *lst, char **spl)
 		n = (n * 10) + (str[i] - '0');
 		i++;
 		if (n > 2147483648)
-			return (ft_clear(lst), ft_free("2", spl), printfd(2, "Error\n"), exit(1), 0);
+			return (ftc(lst), ft_free("2", spl), printfd(2, "Error\n"), \
+			exit(1), 0);
 	}
 	return (n * sign);
 }
@@ -43,7 +44,7 @@ int	ft_isspace(char *av)
 	int	i;
 
 	i = 0;
-	while(av[i])
+	while (av[i])
 	{
 		if (av[i] == ' ')
 			return (1);
@@ -51,6 +52,12 @@ int	ft_isspace(char *av)
 	}
 	return (0);
 }
+
+void	linetoolong(t_list **lst, char **spl)
+{
+	return (ftc(*lst), ft_free("2", spl), printfd(2, "Error\n"), exit(1));
+}
+
 int	ft_isdayz(char *s, t_list **lst)
 {
 	char	**spl;
@@ -62,19 +69,19 @@ int	ft_isdayz(char *s, t_list **lst)
 	{
 		spl = ft_split(s, ' ');
 		if (!spl || !*spl)
-			return (ft_clear(*lst), ft_free("2", spl), printfd(2, "Error\n"), exit(1), 0);
+			return (linetoolong(lst, spl), 0);
 		i = ft_arrlen(spl) - 1;
 		while (i >= 0)
 		{
 			if (ft_isonlydigit(spl[i]))
 				ft_lstadd_front(&*lst, ft_lstnew(ft_atoi2(spl[i], *lst, spl)));
 			else
-				return (ft_clear(*lst), ft_free("2", spl), printfd(2, "Error\n"), exit(1), 0);
+				return (linetoolong(lst, spl), 0);
 			i--;
 		}
 		ft_free("2", spl);
 	}
 	else
-		return (ft_clear(*lst), printfd(2, "Error\n"), exit(1), 0);
+		return (ftc(*lst), printfd(2, "Error\n"), exit(1), 0);
 	return (1);
 }

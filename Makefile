@@ -7,7 +7,8 @@ source = \
     push_swap.c \
 	main.c \
     ft_isdouble.c \
-    ft_isdayz.c
+    ft_isdayz.c \
+	ft_clear.c
 
 object = $(source:.c=.o)
 
