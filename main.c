@@ -6,97 +6,43 @@
 /*   By: ahakki <ahakki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 09:35:05 by ahakki            #+#    #+#             */
-/*   Updated: 2025/01/28 14:32:40 by ahakki           ###   ########.fr       */
+/*   Updated: 2025/01/28 22:32:32 by ahakki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_pushtob(t_list **s_a, t_list **s_b, int *arr, t_var *var)
+void	ft_over5(t_list **stack_a, t_list **stack_b, int *arr, int i)
 {
-	while (*s_a)
-	{
-		if ((*s_a)->content <= arr[var->start])
-		{
-			pb_pa(s_a, s_b, 'b');
-			ra_rb(s_b, 'b');
-			if (var->end < var->i - 1)
-				var->end++;
-			if (var->start + 1 < var->end)
-				var->start++;
-		}
-		else if ((*s_a)->content > arr[var->start] && \
-		(*s_a)->content <= arr[var->end])
-		{
-			pb_pa(s_a, s_b, 'b');
-			if ((*s_b)->next && (*s_b)->content < (*s_b)->next->content)
-				sa_sb(s_b, 'b');
-			if (var->end < var->i - 1)
-				var->end++;
-			if (var->start + 1 < var->end)
-				var->start++;
-		}
-		else
-			ra_rb(s_a, 'a');
-	}
+	ft_sortedarr(arr, *stack_a, i);
+	ft_swaped(stack_a, stack_b, arr, i);
+	ft_sorted(stack_a, stack_b, i);
 }
 
-void	ft_swaped(t_list **stack_a, t_list **stack_b, int *arr, int i)
-{
-	t_var	var;
-
-	if (i <= 100 && i)
-		var.end = i / 6;
-	else if (i > 100)
-		var.end = i / 10;
-	else
-		var.end = 1;
-	var.start = 0;
-	var.i = i;
-	ft_pushtob(stack_a, stack_b, arr, &var);
-}
-
-void	ft_pushtoa(t_list **stack_b, t_list **stack_a, int index, int i)
-{
-	if (index <= i / 2)
-	{
-		while (index-- > 0)
-			ra_rb(stack_b, 'b');
-	}
-	else
-	{
-		while (index++ < i)
-			rra_rrb(stack_b, 'b');
-	}
-	pb_pa(stack_b, stack_a, 'a');
-}
-
-void	ft_sorted(t_list **stack_a, t_list **stack_b, int i)
+int	ft_issorted(t_list **stack_a, int i)
 {
 	t_list	*temp;
-	t_list	*max;
-	int		pos;
-	int		index;
 
-	while (*stack_b)
+	if (i == 1)
+		return (ftc(*stack_a), exit(0), 0);
+	temp = *stack_a;
+	while (temp && temp->next)
 	{
-		temp = *stack_b;
-		pos = 0;
-		index = 0;
-		max = temp;
-		while (temp)
-		{
-			if (max->content < temp->content)
-			{
-				max = temp;
-				index = pos;
-			}
-			temp = temp->next;
-			pos++;
-		}
-		ft_pushtoa(stack_b, stack_a, index, i);
-		i--;
+		if (temp->content > temp->next->content)
+			return (0);
+		temp = temp->next;
 	}
+	return (ftc(*stack_a), exit(0), 0);
+}
+
+void	ft_under5(t_list **stack_a, t_list **stack_b, int i)
+{
+	(void)stack_b;
+	if (i == 2)
+		sa_sb(stack_a, 'a');
+	// if (i == 3)
+	// if (i == 4)
+	// if (i == 5)
 }
 
 int	main(int ac, char **av)
@@ -115,11 +61,13 @@ int	main(int ac, char **av)
 		ft_isdayz(av[i--], &stack_a);
 	ft_isdouble(&stack_a);
 	i = ft_lstsize(stack_a);
+	ft_issorted(&stack_a, i);
 	arr = (int *)(malloc(i * sizeof(int)));
 	if (!arr)
 		return (ftc(stack_a), 0);
-	ft_sortedarr(arr, stack_a, i);
-	ft_swaped(&stack_a, &stack_b, arr, i);
-	ft_sorted(&stack_a, &stack_b, i);
+	if (i > 5)
+		ft_over5(&stack_a, &stack_b, arr, i);
+	else
+		ft_under5(&stack_a, &stack_b, i);
 	return (ftc(stack_a), ftc(stack_b), free(arr), 0);
 }

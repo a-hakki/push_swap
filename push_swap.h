@@ -6,7 +6,7 @@
 /*   By: ahakki <ahakki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:36:20 by ahakki            #+#    #+#             */
-/*   Updated: 2025/01/28 13:41:16 by ahakki           ###   ########.fr       */
+/*   Updated: 2025/01/28 21:26:58 by ahakki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,19 @@ typedef struct s_var
 	int	i;
 }	t_var;
 
+//parssing functions
 int		ft_isdayz(char *s, t_list **lst);
 int		ft_isdouble(t_list **lst);
 void	ft_sortedarr(int *arr, t_list *a, int i);
 
-//linked list function
+//sorting functions
+int		ft_issorted(t_list **stack_a, int i);
+void	ft_pushtob(t_list **s_a, t_list **s_b, int *arr, t_var *var);
+void	ft_swaped(t_list **stack_a, t_list **stack_b, int *arr, int i);
+void	ft_pushtoa(t_list **stack_b, t_list **stack_a, int index, int i);
+void	ft_sorted(t_list **stack_a, t_list **stack_b, int i);
+
+//linked list functions
 void	pb_pa(t_list **stack_a, t_list **stack_b, char c);
 void	sa_sb(t_list **a, char c);
 void	ftc(t_list *lst);

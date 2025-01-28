@@ -8,7 +8,9 @@ source = \
 	main.c \
     ft_isdouble.c \
     ft_isdayz.c \
-	ft_clear.c
+	ft_clear.c \
+	rra_rrb.c \
+	sorting.c
 
 object = $(source:.c=.o)
 
