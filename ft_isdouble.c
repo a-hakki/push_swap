@@ -6,7 +6,7 @@
 /*   By: ahakki <ahakki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 21:45:59 by ahakki            #+#    #+#             */
-/*   Updated: 2025/01/27 20:20:50 by ahakki           ###   ########.fr       */
+/*   Updated: 2025/01/28 10:10:05 by ahakki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_isdouble(t_list **lst)
 		while (checker)
 		{
 			if (temp->content == checker->content)
-				return (ft_clear(*lst), printfd(2, "Error\n"), exit(1), 0);
+				return (ft_clear(*lst), printfd(2, "Error\n", temp->content), exit(1), 0);
 			checker = checker->next;
 		}
 		temp = temp->next;

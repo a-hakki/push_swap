@@ -31,6 +31,8 @@ void generate_unique_numbers(int n) {
         }
     }
 
+    
+
     // Print the numbers separated by spaces
     for (int i = 0; i < n; i++) {
         printf("%d", numbers[i]);

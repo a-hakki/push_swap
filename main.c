@@ -6,7 +6,7 @@
 /*   By: ahakki <ahakki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 09:35:05 by ahakki            #+#    #+#             */
-/*   Updated: 2025/01/27 17:09:23 by ahakki           ###   ########.fr       */
+/*   Updated: 2025/01/28 09:24:28 by ahakki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@ void	ft_swaped(t_list **stack_a, t_list **stack_b, int *arr, int i)
 		{
 			pb_pa(stack_a, stack_b, 'b');
 			ra_rb(stack_b, 'b');
+			if (end < i - 1)
+				end++;
+			if (start + 1 < end)
+				start++;
 		}
 		else if ((*stack_a)->content > arr[start] && (*stack_a)->content <= arr[end])
 		{
