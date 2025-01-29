@@ -6,7 +6,7 @@
 /*   By: ahakki <ahakki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 09:35:05 by ahakki            #+#    #+#             */
-/*   Updated: 2025/01/28 22:32:32 by ahakki           ###   ########.fr       */
+/*   Updated: 2025/01/29 16:05:55 by ahakki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,12 @@ void	ft_under5(t_list **stack_a, t_list **stack_b, int i)
 	(void)stack_b;
 	if (i == 2)
 		sa_sb(stack_a, 'a');
-	// if (i == 3)
-	// if (i == 4)
-	// if (i == 5)
+	if (i == 3)
+		push_swap3(stack_a);
+	if (i == 4)
+		push_swap4(stack_a, stack_a);
+	if (i == 5)
+		push_swap5(stack_a, stack_b);
 }
 
 int	main(int ac, char **av)

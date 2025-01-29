@@ -10,7 +10,8 @@ source = \
     ft_isdayz.c \
 	ft_clear.c \
 	rra_rrb.c \
-	sorting.c
+	sorting.c \
+	under5.c
 
 object = $(source:.c=.o)
 

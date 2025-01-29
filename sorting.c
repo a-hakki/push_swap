@@ -6,7 +6,7 @@
 /*   By: ahakki <ahakki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 21:16:44 by ahakki            #+#    #+#             */
-/*   Updated: 2025/01/28 21:17:24 by ahakki           ###   ########.fr       */
+/*   Updated: 2025/01/29 16:15:34 by ahakki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_swaped(t_list **stack_a, t_list **stack_b, int *arr, int i)
 	if (i <= 100 && i)
 		var.end = i / 6;
 	else if (i > 100)
-		var.end = i / 10;
+		var.end = i / 12;
 	else
 		var.end = 1;
 	var.start = 0;
