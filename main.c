@@ -6,7 +6,7 @@
 /*   By: ahakki <ahakki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 09:35:05 by ahakki            #+#    #+#             */
-/*   Updated: 2025/01/30 09:52:08 by ahakki           ###   ########.fr       */
+/*   Updated: 2025/01/30 12:17:31 by ahakki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	ft_issorted(t_list **stack_a, int i)
 	}
 	return (ftc(*stack_a), exit(0), 0);
 }
+
 void	ft_over5(t_list **stack_a, t_list **stack_b, int *arr, int i)
 {
 	ft_sortedarr(arr, *stack_a, i);

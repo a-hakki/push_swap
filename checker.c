@@ -6,48 +6,54 @@
 /*   By: ahakki <ahakki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 09:42:48 by ahakki            #+#    #+#             */
-/*   Updated: 2025/01/30 11:06:18 by ahakki           ###   ########.fr       */
+/*   Updated: 2025/01/30 12:17:03 by ahakki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_swap_language(char *buffer, t_list **a, t_list **b)
+int	push_swap_language(char *buffer, t_list **a, t_list **b)
 {
-	if (ft_strncmp(buffer, "sa", 3) == 0)
-		sa_sb(a, 's');
-	if (ft_strncmp(buffer, "sb", 3) == 0)
-		sa_sb(b, 's');
-	if (ft_strncmp(buffer, "ss", 3) == 0)
-		swap(b, a);
-	if (ft_strncmp(buffer, "ra", 3) == 0)
-		ra_rb(b, 's');
-	if (ft_strncmp(buffer, "rb", 3) == 0)
-		ra_rb(b, 's');
-	if (ft_strncmp(buffer, "rr", 3) == 0)
-		rr(b, a);
-	if (ft_strncmp(buffer, "rra", 3) == 0)
-		rra_rrb(a, 's');
-	if (ft_strncmp(buffer, "rrb", 3) == 0)
-		rra_rrb(b, 's');
-	if (ft_strncmp(buffer, "rrb", 3) == 0)
-		rrr(b, a);
+	if (ft_strncmp(buffer, "sa\n", 3) == 0)
+		return (sa_sb(a, 's'), 1);
+	if (ft_strncmp(buffer, "sb\n", 3) == 0)
+		return (sa_sb(b, 's'), 1);
+	if (ft_strncmp(buffer, "ss\n", 3) == 0)
+		return (swap(b, a), 1);
+	if (ft_strncmp(buffer, "ra\n", 3) == 0)
+		return (ra_rb(b, 's'), 1);
+	if (ft_strncmp(buffer, "rb\n", 3) == 0)
+		return (ra_rb(b, 's'), 1);
+	if (ft_strncmp(buffer, "rr\n", 3) == 0)
+		return (rr(b, a), 1);
+	if (ft_strncmp(buffer, "rra\n", 4) == 0)
+		return (rra_rrb(a, 's'), 1);
+	if (ft_strncmp(buffer, "rrb\n", 4) == 0)
+		return (rra_rrb(b, 's'), 1);
+	if (ft_strncmp(buffer, "rrr\n", 4) == 0)
+		return (rrr(b, a), 1);
+	if (ft_strncmp(buffer, "pa\n", 3) == 0)
+		return (pb_pa(b, a, 's'), 1);
+	if (ft_strncmp(buffer, "pb\n", 3) == 0)
+		return (pb_pa(a, b, 's'), 1);
+	get_next_line(100);
+	return (ftc(*a), ftc(*b), printfd(1, "Error\n"), free(buffer), exit(1), 0);
 }
 
-int	ft_checker(t_list **stack_a, int i)
+int	ft_checker(t_list **a, t_list **b, int i)
 {
 	t_list	*temp;
 
 	if (i == 1)
-		return (ftc(*stack_a), exit(0), 0);
-	temp = *stack_a;
+		return (ftc(*a), exit(0), 0);
+	temp = *a;
 	while (temp && temp->next)
 	{
 		if (temp->content > temp->next->content)
-			return ((ftc(*stack_a), printfd(1, "KO\n") , exit(1), 0));
+			return ((ftc(*a), ftc(*b), printfd(1, "KO\n"), exit(1), 0));
 		temp = temp->next;
 	}
-	return (ftc(*stack_a), printfd(1, "OK\n") ,exit(0), 0);
+	return (ftc(*a), ftc(*b), printfd(1, "OK\n"), exit(0), 0);
 }
 
 int	main(int ac, char **av)
@@ -73,6 +79,6 @@ int	main(int ac, char **av)
 		free(buffer);
 		buffer = get_next_line(0);
 	}
-	ft_checker(&stack_a, i);
+	ft_checker(&stack_a, &stack_b, i);
 	return (ftc(stack_a), ftc(stack_b), 0);
 }

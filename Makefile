@@ -48,7 +48,7 @@ s: re clean
 f: $(object)
 	$(CC) $(CFLAGS) $(object) main.c $(lib) -o $(NAME)
 	$(CC) $(CFLAGS) $(object) checker.c $(lib) -o $(NAME1)
-	rm -rf $(object) && clear
+	rm -rf $(object) main.o && clear
 
 
 .SECONDARY: $(object)
