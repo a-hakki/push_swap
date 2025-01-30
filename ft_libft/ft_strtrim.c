@@ -6,7 +6,7 @@
 /*   By: ahakki <ahakki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:16:30 by ahakki            #+#    #+#             */
-/*   Updated: 2025/01/21 13:28:41 by ahakki           ###   ########.fr       */
+/*   Updated: 2025/01/30 10:10:21 by ahakki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ char	*ft_strtrim(char *s1, char *set)
 	size_t	i;
 	size_t	start;
 	size_t	end;
+	char	*r;
 
 	if (!s1 || !set)
 		return (NULL);
@@ -28,5 +29,6 @@ char	*ft_strtrim(char *s1, char *set)
 	while (i > start && ft_strchr(set, s1[i]))
 		i--;
 	end = i + 1;
-	return (ft_substr(s1, start, end - start));
+	r = ft_substr(s1, start, end - start);
+	return (free(s1), r);
 }

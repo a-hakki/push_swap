@@ -6,7 +6,7 @@
 /*   By: ahakki <ahakki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 21:16:44 by ahakki            #+#    #+#             */
-/*   Updated: 2025/01/29 16:15:34 by ahakki           ###   ########.fr       */
+/*   Updated: 2025/01/30 09:41:15 by ahakki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_pushtob(t_list **s_a, t_list **s_b, int *arr, t_var *var)
 	}
 }
 
-void	ft_swaped(t_list **stack_a, t_list **stack_b, int *arr, int i)
+void	ft_sorted1(t_list **stack_a, t_list **stack_b, int *arr, int i)
 {
 	t_var	var;
 
@@ -71,7 +71,7 @@ void	ft_pushtoa(t_list **stack_b, t_list **stack_a, int index, int i)
 	pb_pa(stack_b, stack_a, 'a');
 }
 
-void	ft_sorted(t_list **stack_a, t_list **stack_b, int i)
+void	ft_sorted2(t_list **stack_a, t_list **stack_b, int i)
 {
 	t_list	*temp;
 	t_list	*max;

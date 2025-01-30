@@ -6,7 +6,7 @@
 /*   By: ahakki <ahakki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 15:58:39 by ahakki            #+#    #+#             */
-/*   Updated: 2025/01/29 16:08:51 by ahakki           ###   ########.fr       */
+/*   Updated: 2025/01/30 09:35:14 by ahakki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,31 +35,6 @@ void	push_swap3(t_list **head)
 	}
 	if (num.a > num.b && num.a > num.c && num.b < num.c)
 		ra_rb(head, 'a');
-}
-
-void	push_swap4(t_list **a, t_list **b)
-{
-	t_sort	n;
-
-	pb_pa(a, b, 'b');
-	push_swap3(a);
-	n.a = (**a).content;
-	n.b = (**a).next->content;
-	n.c = (**a).next->next->content;
-	if ((**b).content < n.c && (**b).content > n.b)
-	{
-		pb_pa(a, b, 'b');
-		sa_sb(b, 'b');
-		pb_pa(b, a, 'a');
-		sa_sb(a, 'a');
-		pb_pa(b, a, 'a');
-		return ;
-	}
-	pb_pa(b, a, 'a');
-	if ((**a).content > n.c)
-		rra_rrb(a, 'a');
-	if ((**a).content > n.a && (**a).content < n.b)
-		sa_sb(a, 'a');
 }
 
 int	find_min(t_list *a)

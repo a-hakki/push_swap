@@ -1,11 +1,11 @@
 NAME = push_swap
+NAME1 = checker
 
 LIBFT_DIR = ./ft_libft
 lib = $(LIBFT_DIR)/libft.a
 
 source = \
     push_swap.c \
-	main.c \
     ft_isdouble.c \
     ft_isdayz.c \
 	ft_clear.c \
@@ -24,7 +24,12 @@ $(lib):
 	make -C $(LIBFT_DIR)
 
 $(NAME): $(object)
-	$(CC) $(CFLAGS) $(object) $(lib) -o $(NAME)
+	$(CC) $(CFLAGS) $(object) main.c $(lib) -o $(NAME)
+
+bonus: $(lib) $(NAME1)
+
+$(NAME1): $(object)
+	$(CC) $(CFLAGS) $(object) checker.c $(lib) -o $(NAME1)
 
 clean:
 	rm -rf $(object)
@@ -41,7 +46,10 @@ s: re clean
 	rm -rf $(object)
 
 f: $(object)
-	$(CC) $(CFLAGS) $(object) ./ft_libft/libft.a -o $(NAME)
+	$(CC) $(CFLAGS) $(object) main.c $(lib) -o $(NAME)
+	$(CC) $(CFLAGS) $(object) checker.c $(lib) -o $(NAME1)
 	rm -rf $(object) && clear
+
+
 .SECONDARY: $(object)
 .PHONY: all clean fclean re somme

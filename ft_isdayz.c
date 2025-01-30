@@ -6,7 +6,7 @@
 /*   By: ahakki <ahakki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 21:40:45 by ahakki            #+#    #+#             */
-/*   Updated: 2025/01/28 13:47:26 by ahakki           ###   ########.fr       */
+/*   Updated: 2025/01/30 09:28:58 by ahakki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_atoi2(char const *str, t_list *lst, char **spl)
 	i = 0;
 	sign = 1;
 	n = 0;
-	if (!strncmp(str, "2147483648", 10))
+	if (!ft_strncmp(str, "2147483648", 10))
 		return (ftc(lst), printfd(2, "Error\n"), exit(1), 0);
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;

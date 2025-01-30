@@ -6,18 +6,11 @@
 /*   By: ahakki <ahakki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 09:35:05 by ahakki            #+#    #+#             */
-/*   Updated: 2025/01/29 16:05:55 by ahakki           ###   ########.fr       */
+/*   Updated: 2025/01/30 09:52:08 by ahakki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ft_over5(t_list **stack_a, t_list **stack_b, int *arr, int i)
-{
-	ft_sortedarr(arr, *stack_a, i);
-	ft_swaped(stack_a, stack_b, arr, i);
-	ft_sorted(stack_a, stack_b, i);
-}
 
 int	ft_issorted(t_list **stack_a, int i)
 {
@@ -29,10 +22,16 @@ int	ft_issorted(t_list **stack_a, int i)
 	while (temp && temp->next)
 	{
 		if (temp->content > temp->next->content)
-			return (0);
+			return (1);
 		temp = temp->next;
 	}
 	return (ftc(*stack_a), exit(0), 0);
+}
+void	ft_over5(t_list **stack_a, t_list **stack_b, int *arr, int i)
+{
+	ft_sortedarr(arr, *stack_a, i);
+	ft_sorted1(stack_a, stack_b, arr, i);
+	ft_sorted2(stack_a, stack_b, i);
 }
 
 void	ft_under5(t_list **stack_a, t_list **stack_b, int i)
@@ -42,9 +41,7 @@ void	ft_under5(t_list **stack_a, t_list **stack_b, int i)
 		sa_sb(stack_a, 'a');
 	if (i == 3)
 		push_swap3(stack_a);
-	if (i == 4)
-		push_swap4(stack_a, stack_a);
-	if (i == 5)
+	if (i == 5 || i == 4)
 		push_swap5(stack_a, stack_b);
 }
 

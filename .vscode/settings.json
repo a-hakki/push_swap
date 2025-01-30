@@ -3,6 +3,7 @@
         "libft.h": "c",
         "chrono": "c",
         "variant": "c",
-        "unistd.h": "c"
+        "unistd.h": "c",
+        "cstdlib": "c"
     }
 }
