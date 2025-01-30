@@ -4,6 +4,7 @@
         "chrono": "c",
         "variant": "c",
         "unistd.h": "c",
-        "cstdlib": "c"
+        "cstdlib": "c",
+        "push_swap.h": "c"
     }
 }
