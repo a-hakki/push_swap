@@ -47,5 +47,4 @@ void	swap(t_list **a, t_list **b)
 {
 	sa_sb(a, 's');
 	sa_sb(b, 's');
-	write(1, "ss\n", 3);
 }

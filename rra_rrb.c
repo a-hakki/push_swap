@@ -6,7 +6,7 @@
 /*   By: ahakki <ahakki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 20:24:18 by ahakki            #+#    #+#             */
-/*   Updated: 2025/01/28 20:26:30 by ahakki           ###   ########.fr       */
+/*   Updated: 2025/01/30 11:05:48 by ahakki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	rr(t_list **a, t_list **b)
 {
 	ra_rb(a, 's');
 	ra_rb(b, 's');
-	write(1, "rr\n", 3);
 }
 
 void	rra_rrb(t_list **a, int c)
@@ -41,10 +40,7 @@ void	rra_rrb(t_list **a, int c)
 	t_list	*fin;
 
 	if (!(*a) || !(*a)->next)
-	{
-		printfd(1, "here\n");
 		return ;
-	}
 	tmp = ft_lstlast(*a);
 	fin = *a;
 	while (fin->next->next != NULL)
@@ -56,4 +52,10 @@ void	rra_rrb(t_list **a, int c)
 		write(1, "rra\n", 4);
 	if (c == 'b')
 		write(1, "rrb\n", 4);
+}
+
+void	rrr(t_list **a, t_list **b)
+{
+	rra_rrb(a, 's');
+	rra_rrb(b, 's');
 }
