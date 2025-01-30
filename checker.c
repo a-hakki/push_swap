@@ -6,7 +6,7 @@
 /*   By: ahakki <ahakki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 09:42:48 by ahakki            #+#    #+#             */
-/*   Updated: 2025/01/30 12:17:03 by ahakki           ###   ########.fr       */
+/*   Updated: 2025/01/30 12:23:17 by ahakki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	main(int ac, char **av)
 {
 	int		i;
 	char	*buffer;
-	t_list	*stack_a;
+	t_list	*stack_;
 	t_list	*stack_b;
 
 	stack_a = NULL;
