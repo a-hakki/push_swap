@@ -6,7 +6,7 @@
 /*   By: ahakki <ahakki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:46:28 by ahakki            #+#    #+#             */
-/*   Updated: 2025/01/30 12:18:11 by ahakki           ###   ########.fr       */
+/*   Updated: 2025/01/30 13:09:27 by ahakki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ char	*get_next_line(int fd)
 	char			*allocated;
 	int				readen;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd == 100)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (ft_free("1", saved), NULL);
 	protected_alloc(&saved, &allocated);
 	if (!saved || !allocated)

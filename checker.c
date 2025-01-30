@@ -6,7 +6,7 @@
 /*   By: ahakki <ahakki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 09:42:48 by ahakki            #+#    #+#             */
-/*   Updated: 2025/01/30 12:23:54 by ahakki           ###   ########.fr       */
+/*   Updated: 2025/01/30 13:29:48 by ahakki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	push_swap_language(char *buffer, t_list **a, t_list **b)
 		return (pb_pa(b, a, 's'), 1);
 	if (ft_strncmp(buffer, "pb\n", 3) == 0)
 		return (pb_pa(a, b, 's'), 1);
-	get_next_line(100);
+	get_next_line(-1);
 	return (ftc(*a), ftc(*b), printfd(1, "Error\n"), free(buffer), exit(1), 0);
 }
 
@@ -44,16 +44,15 @@ int	ft_checker(t_list **a, t_list **b, int i)
 {
 	t_list	*temp;
 
-	if (i == 1)
-		return (ftc(*a), exit(0), 0);
+	(void)i;
 	temp = *a;
 	while (temp && temp->next)
 	{
 		if (temp->content > temp->next->content)
-			return ((ftc(*a), ftc(*b), printfd(1, "KO\n"), exit(1), 0));
+			return ((ftc(*a), ftc(*b), write(1, "\033[31mKO\n\033[0m", 8), exit(1), 0));
 		temp = temp->next;
 	}
-	return (ftc(*a), ftc(*b), printfd(1, "OK\n"), exit(0), 0);
+	return (ftc(*a), ftc(*b), write(1, "\033[32mOK\n\033[0m", 8), exit(0), 0);
 }
 
 int	main(int ac, char **av)
