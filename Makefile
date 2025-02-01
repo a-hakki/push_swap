@@ -63,7 +63,7 @@ s: re clean
 f: $(object) $(object_b)
 	$(CC) $(CFLAGS) $(object) $(lib) -o $(NAME)
 	$(CC) $(CFLAGS) $(object_b) $(lib) -o $(NAME1)
-	rm -rf $(object) && clear
+	rm -rf $(object) $(object) && clear
 
 
 .SECONDARY: $(object)
