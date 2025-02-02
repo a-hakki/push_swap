@@ -6,7 +6,7 @@
 /*   By: ahakki <ahakki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 09:42:48 by ahakki            #+#    #+#             */
-/*   Updated: 2025/01/30 14:24:49 by ahakki           ###   ########.fr       */
+/*   Updated: 2025/02/02 15:33:18 by ahakki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ int	ft_checker(t_list **a, t_list **b, int i)
 {
 	t_list	*temp;
 
-	(void)i;
+	if (ft_lstsize(*a) != i)
+		return ((ftc(*a), ftc(*b), write(1, "KO\n", 3), exit(1), 0));
 	temp = *a;
 	while (temp && temp->next)
 	{
