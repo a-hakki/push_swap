@@ -21,7 +21,7 @@ int	ft_atoi2(char const *str, t_list *lst, char **spl)
 	i = 0;
 	sign = 1;
 	n = 0;
-	if (!ft_strncmp(str, "2147483648", 10))
+	if (!ft_strncmp(str, "2147483648", 10) || !ft_strncmp(str, "+2147483648", 11))
 		return (ftc(lst), printfd(2, "Error\n"), exit(1), 0);
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
